@@ -1,0 +1,15 @@
+server:
+  port: 8082
+
+# General Config
+spring:
+    data:
+        mongodb:
+          uri: ${MONGODB_URI}
+          database: ${MONGODB_DATABASE}
+
+logging:
+  level:
+    com: 
+      lsoftware:
+        voting: info
