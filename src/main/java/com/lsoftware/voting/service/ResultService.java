@@ -2,18 +2,7 @@
  * Developed by: Luis Espinosa, be aware that this project
  * is part of my personal portfolio.
  */
-package com.lsoftware.voting.dto;
-
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.aggregation.Aggregation;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.stereotype.Service;
-
+package com.lsoftware.voting.service;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.match;
@@ -21,8 +10,18 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.newA
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.sort;
 
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.stereotype.Service;
+
+import com.lsoftware.voting.dto.ResultDTO;
 import com.lsoftware.voting.model.Vote;
 import com.lsoftware.voting.shared.service.ServiceResultsMethods;
 
@@ -41,8 +40,16 @@ public class ResultService implements ServiceResultsMethods<ResultDTO> {
 	private static final String TOTAL = "total";
 
 	/** The mongo template. */
-	@Autowired
 	MongoTemplate mongoTemplate;
+	
+	/**
+	 * Instantiates a new result service.
+	 *
+	 * @param mongoTemplate the mongo template
+	 */
+	public ResultService(MongoTemplate mongoTemplate) {
+		this.mongoTemplate = mongoTemplate;
+	}
 
 	/**
 	 * Gets the results.

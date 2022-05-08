@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lsoftware.voting.dto.ResultDTO;
-import com.lsoftware.voting.dto.ResultService;
+import com.lsoftware.voting.service.ResultService;
 import com.lsoftware.voting.shared.api.ApiCustomResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
